@@ -31,4 +31,13 @@ public interface MailProperties {
     void setSender(String sender);
 
     void setPrefix(String string);
+    
+    void setSecureMode(String secureMode);
+    
+    enum SecureMode {
+        PLAIN,
+        STARTTLS,
+        SSL
+    }
+
 }
