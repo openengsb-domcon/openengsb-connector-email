@@ -31,14 +31,14 @@ import javax.mail.internet.MimeMessage;
 
 import org.apache.commons.lang.builder.EqualsBuilder;
 import org.apache.commons.lang.builder.HashCodeBuilder;
-import org.apache.commons.logging.Log;
-import org.apache.commons.logging.LogFactory;
 import org.openengsb.core.api.AliveState;
 import org.openengsb.core.api.DomainMethodExecutionException;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 public class JavaxMailAbstraction implements MailAbstraction {
 
-    private Log log = LogFactory.getLog(JavaxMailAbstraction.class);
+    private static final Logger LOGGER = LoggerFactory.getLogger(JavaxMailAbstraction.class);
 
     private AliveState aliveState = AliveState.OFFLINE;
     private SessionManager sessionManager = new SessionManager();
@@ -81,16 +81,16 @@ public class JavaxMailAbstraction implements MailAbstraction {
         Transport transport = null;
         try {
             transport = session.getTransport("smtp");
-            log.debug("connecting smtp-transport " + transport);
+            LOGGER.debug("connecting smtp-transport {}", transport);
             transport.connect();
             if (transport.isConnected()) {
                 aliveState = AliveState.ONLINE;
             } else {
                 aliveState = AliveState.OFFLINE;
             }
-            log.debug("State is now " + aliveState);
+            LOGGER.debug("State is now {}", aliveState);
         } catch (MessagingException e) {
-            log.error("could not connect transport ", e);
+            LOGGER.error("could not connect transport", e);
             aliveState = AliveState.OFFLINE;
             throw new DomainMethodExecutionException("Emailnotifier could not connect (wrong username/password or"
                     + " mail server unavailable) ");
@@ -99,16 +99,16 @@ public class JavaxMailAbstraction implements MailAbstraction {
     }
 
     private void send(Message message, Session session) throws MessagingException {
-        log.info("sending email-message");
+        LOGGER.info("sending email-message");
         message.saveChanges();
         Transport transport = getTransport(session);
         transport.sendMessage(message, message.getAllRecipients());
         transport.close();
-        log.info("email has been sent");
+        LOGGER.info("email has been sent");
     }
     
     private String buildSubject(MailPropertiesImp properties, String subject) {
-        log.debug("building subject");
+        LOGGER.debug("building subject");
         if (properties.getPrefix() == null) {
             return subject;
         }
@@ -221,14 +221,13 @@ public class JavaxMailAbstraction implements MailAbstraction {
     }
     
     private static class SessionManager {
-        private Log log = LogFactory.getLog(SessionManager.class);
         
         private Session session;
         private MailPropertiesImp properties;
         
         public Session getSession(MailPropertiesImp newProperties) {         
             if (session == null || !newProperties.equals(properties)) {
-                log.info("create new mail session");
+                LOGGER.info("create new mail session");
                 
                 properties = newProperties;
                 session = Session.getInstance(properties.getProperties(), new Authenticator() {
