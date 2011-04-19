@@ -92,8 +92,7 @@ public class JavaxMailAbstraction implements MailAbstraction {
         } catch (MessagingException e) {
             LOGGER.error("could not connect transport", e);
             aliveState = AliveState.OFFLINE;
-            throw new DomainMethodExecutionException("Emailnotifier could not connect (wrong username/password or"
-                    + " mail server unavailable) ");
+            throw new DomainMethodExecutionException("Emailnotifier could not connect", e);
         }
         return transport;
     }
@@ -106,7 +105,7 @@ public class JavaxMailAbstraction implements MailAbstraction {
         transport.close();
         LOGGER.info("email has been sent");
     }
-    
+
     private String buildSubject(MailPropertiesImp properties, String subject) {
         LOGGER.debug("building subject");
         if (properties.getPrefix() == null) {
@@ -190,7 +189,7 @@ public class JavaxMailAbstraction implements MailAbstraction {
         public String getPrefix() {
             return prefix;
         }
-        
+
         @Override
         public void setSecureMode(String secureMode) {
             if (SecureMode.SSL.toString().equals(secureMode)) {
@@ -208,7 +207,7 @@ public class JavaxMailAbstraction implements MailAbstraction {
         public boolean equals(Object obj) {
             return EqualsBuilder.reflectionEquals(this, obj);
         }
-        
+
         @Override
         public int hashCode() {
             return HashCodeBuilder.reflectionHashCode(this);
@@ -219,16 +218,16 @@ public class JavaxMailAbstraction implements MailAbstraction {
     public AliveState getAliveState() {
         return aliveState;
     }
-    
+
     private static class SessionManager {
-        
+
         private Session session;
         private MailPropertiesImp properties;
-        
-        public Session getSession(MailPropertiesImp newProperties) {         
+
+        public Session getSession(MailPropertiesImp newProperties) {
             if (session == null || !newProperties.equals(properties)) {
                 LOGGER.info("create new mail session");
-                
+
                 properties = newProperties;
                 session = Session.getInstance(properties.getProperties(), new Authenticator() {
                     @Override

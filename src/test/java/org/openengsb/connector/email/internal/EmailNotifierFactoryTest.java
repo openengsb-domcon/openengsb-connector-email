@@ -25,8 +25,10 @@ import static org.mockito.Mockito.verify;
 import java.util.HashMap;
 import java.util.Map;
 
+import org.junit.Before;
 import org.junit.Test;
 import org.openengsb.connector.email.internal.abstraction.MailAbstraction;
+import org.openengsb.connector.email.internal.abstraction.MailAbstractionFactory;
 import org.openengsb.connector.email.internal.abstraction.MailProperties;
 import org.openengsb.core.api.AliveState;
 
@@ -34,12 +36,14 @@ public class EmailNotifierFactoryTest {
 
     public static class MailAbstractionImp implements MailAbstraction {
         MailProperties props = mock(MailProperties.class);
-        
-        @Override
-        public void send(MailProperties properties, String subject, String textContet, String receiver) { }
 
         @Override
-        public void connect(MailProperties properties) { }
+        public void send(MailProperties properties, String subject, String textContet, String receiver) {
+        }
+
+        @Override
+        public void connect(MailProperties properties) {
+        }
 
         @Override
         public MailProperties createMailProperties() {
@@ -51,11 +55,22 @@ public class EmailNotifierFactoryTest {
             return null;
         }
     }
-    
+
+    private EmailNotifierFactory factory;
+
+    @Before
+    public void setUp() throws Exception {
+        this.factory = new EmailNotifierFactory();
+        this.factory.setFactory(new MailAbstractionFactory() {
+            @Override
+            public MailAbstraction newInstance() {
+                return new MailAbstractionImp();
+            }
+        });
+    }
+
     @Test
     public void testCreateEmailNotifier() throws Exception {
-        EmailNotifierFactory factory = new EmailNotifierFactory(MailAbstractionImp.class);
-
         Map<String, String> attributes = new HashMap<String, String>();
         attributes.put("user", "user");
         attributes.put("password", "password");
@@ -66,9 +81,10 @@ public class EmailNotifierFactoryTest {
         attributes.put("smtpPort", "smtpPort");
         attributes.put("secureMode", "SSL");
 
-        EmailNotifier notifier = factory.createServiceInstance("id", attributes);
+        EmailNotifier notifier = (EmailNotifier) factory.createNewInstance("id");
+        factory.applyAttributes(notifier, attributes);
         MailProperties propertiesMock = notifier.getProperties();
-        
+
         assertNotNull(notifier);
         assertEquals("id", notifier.getInstanceId());
 
@@ -81,11 +97,9 @@ public class EmailNotifierFactoryTest {
         verify(propertiesMock).setUser("user");
         verify(propertiesMock).setSecureMode("SSL");
     }
-    
+
     @Test
     public void testUpdateEmailNotifier() throws Exception {
-        EmailNotifierFactory factory = new EmailNotifierFactory(MailAbstractionImp.class);
-    
         Map<String, String> attributes = new HashMap<String, String>();
         attributes.put("user", "user");
         attributes.put("password", "password");
@@ -94,14 +108,15 @@ public class EmailNotifierFactoryTest {
         attributes.put("smtpSender", "smtpSender");
         attributes.put("smtpHost", "smtpHost");
         attributes.put("smtpPort", "smtpPort");
-    
-        EmailNotifier notifier = factory.createServiceInstance("id", attributes);
+
+        EmailNotifier notifier = (EmailNotifier) factory.createNewInstance("id");
+        factory.applyAttributes(notifier, attributes);
         MailProperties propertiesMock = notifier.getProperties();
-    
+
         attributes.put("user", "otherValue");
-    
-        factory.updateServiceInstance(notifier, attributes);
-    
+
+        factory.applyAttributes(notifier, attributes);
+
         verify(propertiesMock).setUser("otherValue");
     }
 }
