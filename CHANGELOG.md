@@ -9,6 +9,7 @@ Initial release of the OpenEngSB Email Connector as standalone package
 
 ** Library Upgrade
     * [OPENENGSB-1394] - Upgrade to openengsb-1.2.0.RC1
+    * [OPENENGSB-1440] - Upgrade to openengsb-domain-1.2.0
 
 ** Task
     * [OPENENGSB-1278] - Use slf4j instead of commons-logging in email connector
