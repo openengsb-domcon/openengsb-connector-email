@@ -31,6 +31,7 @@ import java.util.ArrayList;
 import org.junit.Test;
 import org.openengsb.connector.email.internal.abstraction.MailAbstraction;
 import org.openengsb.connector.email.internal.abstraction.MailProperties;
+import org.openengsb.connector.email.model.TestNotification;
 import org.openengsb.core.api.AliveState;
 import org.openengsb.core.api.DomainMethodExecutionException;
 import org.openengsb.domain.notification.model.Attachment;
@@ -45,7 +46,7 @@ public class EmailNotifierTest {
         when(mailMock.createMailProperties()).thenReturn(propertiesMock);
         EmailNotifier notifier = new EmailNotifier("notifier1", mailMock);
 
-        Notification notification = new Notification();
+        Notification notification = new TestNotification();
         notification.setRecipient("openengsb.notification.test@gmail.com");
         notification.setSubject("Subject");
         notification.setMessage("Content");
@@ -88,7 +89,7 @@ public class EmailNotifierTest {
         when(mailMock.createMailProperties()).thenReturn(propertiesMock);
         EmailNotifier notifier = new EmailNotifier("notifier1", mailMock);
 
-        Notification notification = new Notification();
+        Notification notification = new TestNotification();
         notification.setRecipient("openengsb.notification.test@gmail.com");
         notification.setSubject("Subject");
         notification.setMessage("Content");
