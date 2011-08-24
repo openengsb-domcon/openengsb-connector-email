@@ -21,14 +21,14 @@ import org.apache.commons.lang.StringUtils;
 import org.openengsb.connector.email.internal.abstraction.MailAbstraction;
 import org.openengsb.connector.email.internal.abstraction.MailProperties;
 import org.openengsb.core.api.AliveState;
-import org.openengsb.core.common.AbstractOpenEngSBService;
+import org.openengsb.core.common.AbstractOpenEngSBConnectorService;
 import org.openengsb.domain.notification.NotificationDomain;
 import org.openengsb.domain.notification.model.Notification;
 import org.osgi.framework.ServiceRegistration;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-public class EmailNotifier extends AbstractOpenEngSBService implements NotificationDomain {
+public class EmailNotifier extends AbstractOpenEngSBConnectorService implements NotificationDomain {
 
     private static final Logger LOGGER = LoggerFactory.getLogger(EmailNotifier.class);
 
