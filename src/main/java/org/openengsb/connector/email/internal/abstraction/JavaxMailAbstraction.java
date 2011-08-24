@@ -126,6 +126,7 @@ public class JavaxMailAbstraction implements MailAbstraction {
         private String password;
         private String sender;
         private String prefix;
+        @SuppressWarnings("unused")
         private SecureMode secureMode = SecureMode.PLAIN;
 
         MailPropertiesImp() {

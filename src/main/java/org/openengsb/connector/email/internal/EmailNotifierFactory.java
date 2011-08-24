@@ -20,15 +20,22 @@ package org.openengsb.connector.email.internal;
 import java.util.Map;
 
 import org.openengsb.connector.email.internal.abstraction.MailAbstractionFactory;
-import org.openengsb.core.api.Domain;
+import org.openengsb.core.api.Connector;
+import org.openengsb.core.api.ekb.EngineeringKnowledgeBaseService;
 import org.openengsb.core.common.AbstractConnectorInstanceFactory;
+import org.openengsb.domain.notification.NotificationDomainEvents;
 
 public class EmailNotifierFactory extends AbstractConnectorInstanceFactory<EmailNotifier> {
 
     private MailAbstractionFactory factory;
+    
+    @SuppressWarnings("unused")
+    private EngineeringKnowledgeBaseService ekbService;
+    @SuppressWarnings("unused")
+    private NotificationDomainEvents notificationEvents;
 
     @Override
-    public Domain createNewInstance(String id) {
+    public Connector createNewInstance(String id) {
         return new EmailNotifier(id, factory.newInstance());
     }
 
@@ -64,6 +71,14 @@ public class EmailNotifierFactory extends AbstractConnectorInstanceFactory<Email
 
     public void setFactory(MailAbstractionFactory factory) {
         this.factory = factory;
+    }
+    
+    public void setNotificationEvents(NotificationDomainEvents notificationEvents) {
+        this.notificationEvents = notificationEvents;
+    }
+    
+    public void setEkbService(EngineeringKnowledgeBaseService ekbService) {
+        this.ekbService = ekbService;
     }
 
 }
