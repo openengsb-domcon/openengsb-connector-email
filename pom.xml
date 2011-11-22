@@ -141,7 +141,7 @@
     <!-- Domain References -->
     <dependency>
       <groupId>org.openengsb.domain</groupId>
-      <artifactId>openengsb-domain-notification</artifactId>
+      <artifactId>org.openengsb.domain.notification</artifactId>
       <version>${openengsb.domain.version}</version>
       <scope>provided</scope>
     </dependency>
