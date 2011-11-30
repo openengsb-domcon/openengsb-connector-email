@@ -25,7 +25,7 @@
     <feature version="${openengsb.version.range}">openengsb-framework</feature>
     <feature version="${openengsb.domain.range}">openengsb-domain-notification</feature>
     <bundle>mvn:org.apache.servicemix.bundles/org.apache.servicemix.bundles.javax.mail/${javax.mail.version}</bundle>
-    <bundle>mvn:org.openengsb.connector/openengsb-connector-email/${project.version}</bundle>
+    <bundle>mvn:org.openengsb.connector/org.openengsb.connector.email/${project.version}</bundle>
   </feature>
 </features>
 

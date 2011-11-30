@@ -54,5 +54,4 @@
   
   <reference id="notificationEvents" interface="org.openengsb.domain.notification.NotificationDomainEvents" />
   <reference id="ekbService" interface="org.openengsb.core.api.ekb.EngineeringKnowledgeBaseService" />
-
 </blueprint>

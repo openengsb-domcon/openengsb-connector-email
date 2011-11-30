@@ -32,12 +32,12 @@
     <openengsb.domain.version>2.0.0-SNAPSHOT</openengsb.domain.version>
     <openengsb.domain.range>[2.0,2.1)</openengsb.domain.range>
     <javax.mail.version>1.4.1_3</javax.mail.version>
-    <openengsb.framework.version>2.0.3</openengsb.framework.version>
+    <openengsb.framework.version>2.1.2</openengsb.framework.version>
   </properties>
 
   <modelVersion>4.0.0</modelVersion>
   <groupId>org.openengsb.connector</groupId>
-  <artifactId>openengsb-connector-email</artifactId>
+  <artifactId>org.openengsb.connector.email</artifactId>
   <version>2.0.0-SNAPSHOT</version>
 
   <name>OpenEngSB :: Connector :: Email</name>
