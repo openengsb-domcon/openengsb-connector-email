@@ -24,8 +24,8 @@ import org.junit.Test;
 import org.openengsb.connector.email.internal.EmailNotifier;
 import org.openengsb.connector.email.internal.abstraction.JavaxMailAbstraction;
 import org.openengsb.connector.email.internal.abstraction.MailProperties.SecureMode;
-import org.openengsb.connector.email.model.TestNotification;
 import org.openengsb.core.api.DomainMethodExecutionException;
+import org.openengsb.core.common.util.ModelUtils;
 import org.openengsb.domain.notification.model.Attachment;
 import org.openengsb.domain.notification.model.Notification;
 
@@ -110,7 +110,7 @@ public class EmailNotifierUT {
     }
 
     private Notification createNotification() {
-        Notification notification = new TestNotification();
+        Notification notification = ModelUtils.createEmptyModelObject(Notification.class);
         notification.setRecipient("openengsb.notification.test@gmail.com");
         notification.setSubject("TestMail send on " + new Date());
         notification.setMessage("This is a test mail");
