@@ -19,6 +19,7 @@ package org.openengsb.connector.email.internal.abstraction;
 
 import java.util.Properties;
 
+import javax.activation.DataHandler;
 import javax.mail.Authenticator;
 import javax.mail.Message;
 import javax.mail.Message.RecipientType;
@@ -28,6 +29,7 @@ import javax.mail.Session;
 import javax.mail.Transport;
 import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeMessage;
+import javax.mail.util.ByteArrayDataSource;
 
 import org.apache.commons.lang.builder.EqualsBuilder;
 import org.apache.commons.lang.builder.HashCodeBuilder;
@@ -57,11 +59,11 @@ public class JavaxMailAbstraction implements MailAbstraction {
 
             Session session = getSession(props);
 
-            Message message = new MimeMessage(session);
+            MimeMessage message = new MimeMessage(session);
             message.setFrom(new InternetAddress(props.getSender()));
             message.setRecipients(RecipientType.TO, InternetAddress.parse(receiver));
             message.setSubject(buildSubject(props, subject));
-            message.setText(textContent);
+            message.setDataHandler(new DataHandler(new ByteArrayDataSource(textContent, "text/plain")));
             send(message, session);
         } catch (Exception e) {
             throw new DomainMethodExecutionException(e);
