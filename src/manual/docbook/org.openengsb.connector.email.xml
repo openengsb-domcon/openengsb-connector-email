@@ -26,14 +26,21 @@
   http://www.w3.org/2001/XMLSchema-instance http://www.w3.org/2001/XMLSchema-instance.xsd">
 
   <title>Email Connector</title>
-  <para>TBW</para>
-  <section>
-    <title>Description</title>
-    <para>TBW</para>
-  </section>
+  <para>${project.description}</para>
   <section>
     <title>Configuration</title>
-    <para>TBW</para>
+    <para>The email connector configuration recognizes the following attributes:
+      <itemizedlist>
+        <listitem>prefix</listitem>
+        <listitem>smtpSender</listitem>
+        <listitem>smtpPort</listitem>
+        <listitem>smtpHost</listitem>
+        <listitem>smtpAuth</listitem>
+        <listitem>user</listitem>
+        <listitem>password</listitem>
+        <listitem>secureMode</listitem>
+      </itemizedlist>
+    </para>
   </section>
 
 </chapter>
