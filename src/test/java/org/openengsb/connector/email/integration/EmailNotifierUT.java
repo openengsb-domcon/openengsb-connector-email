@@ -26,8 +26,8 @@ import org.openengsb.connector.email.internal.abstraction.JavaxMailAbstraction;
 import org.openengsb.connector.email.internal.abstraction.MailProperties.SecureMode;
 import org.openengsb.core.api.DomainMethodExecutionException;
 import org.openengsb.core.common.util.ModelUtils;
-import org.openengsb.domain.notification.model.Attachment;
-import org.openengsb.domain.notification.model.Notification;
+import org.openengsb.domain.notification.Attachment;
+import org.openengsb.domain.notification.Notification;
 
 public class EmailNotifierUT {
 
