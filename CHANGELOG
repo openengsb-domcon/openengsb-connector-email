@@ -1,3 +1,39 @@
+openengsb-connector-email-2.0.0 2012-01-10
+
+In this release all all interfaces and implementations have been adapted to the latest 
+domain/openengsb versions. In addition EDB/EKB access has been implemented.
+
+Release Notes - OpenEngSB - Version connector-email-2.0.0
+
+** Bug
+    * [OPENENGSB-2325] - adapt email connector to current openengsb-framework
+    * [OPENENGSB-2422] - In specifc situations trying to send plain text can result in terrible encoding issues
+    * [OPENENGSB-2582] - Domains and Connectors need to include our snapshot repo to work with deployed snapshots correctly
+    * [OPENENGSB-2647] - domain.version.range does not follow semantic versioning
+
+
+
+** Improvement
+    * [OPENENGSB-1842] - Enhance email connector with EDB/EKB access
+    * [OPENENGSB-2577] - add short description to connector-manual
+    * [OPENENGSB-2586] - Include issuetracker, buildserver and inceptionYear from root
+
+
+** Library Upgrade
+    * [OPENENGSB-2638] - Upgrade domain-notification to 2.0.0
+
+
+
+** Task
+    * [OPENENGSB-2567] - move connector documentation to corresponding connector-repositories
+    * [OPENENGSB-2568] - adapt connector to new flat package structure
+    * [OPENENGSB-2649] - Release connector-email-2.0.0
+
+
+
+
+
+
 openengsb-connector-email-1.2.1 2011-05-23
 ---------------------------------------------------------------------
 
