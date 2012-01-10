@@ -22,6 +22,8 @@ domain/openengsb versions. In addition EDB/EKB access has been implemented.
     * [OPENENGSB-2567] - move connector documentation to corresponding connector-repositories
     * [OPENENGSB-2568] - adapt connector to new flat package structure
     * [OPENENGSB-2649] - Release connector-email-2.0.0
+    * [OPENENGSB-2660] - Rename CHANGELOG.md to CHANGELOG
+    * [OPENENGSB-2661] - use openengsb-connector-parent-2.4.0
 
 
 openengsb-connector-email-1.2.1 2011-05-23
