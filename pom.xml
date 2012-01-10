@@ -30,7 +30,6 @@
     <bundle.symbolicName>org.openengsb.connector.email</bundle.symbolicName>
     <bundle.namespace>org.openengsb.connector.email</bundle.namespace>
     <openengsb.domain.version>2.0.0</openengsb.domain.version>
-    <openengsb.domain.range>[2.0,2.1)</openengsb.domain.range>
     <javax.mail.version>1.4.1_3</javax.mail.version>
     <openengsb.framework.version>2.1.2</openengsb.framework.version>
   </properties>
@@ -82,20 +81,6 @@
       <plugin>
         <groupId>org.codehaus.mojo</groupId>
         <artifactId>build-helper-maven-plugin</artifactId>
-      </plugin>
-      <plugin>
-        <groupId>org.apache.felix</groupId>
-        <artifactId>maven-bundle-plugin</artifactId>
-        <extensions>true</extensions>
-        <configuration>
-          <instructions>
-            <Import-Package>
-              ${openengsb.imports},
-              org.openengsb.domain.notification.*;version="${openengsb.domain.range}",
-              *
-            </Import-Package>
-          </instructions>
-        </configuration>
       </plugin>
       <plugin>
         <groupId>org.openengsb</groupId>
