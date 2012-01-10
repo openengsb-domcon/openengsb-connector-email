@@ -29,7 +29,7 @@
   <properties>
     <bundle.symbolicName>org.openengsb.connector.email</bundle.symbolicName>
     <bundle.namespace>org.openengsb.connector.email</bundle.namespace>
-    <openengsb.domain.version>2.0.0-SNAPSHOT</openengsb.domain.version>
+    <openengsb.domain.version>2.0.0</openengsb.domain.version>
     <openengsb.domain.range>[2.0,2.1)</openengsb.domain.range>
     <javax.mail.version>1.4.1_3</javax.mail.version>
     <openengsb.framework.version>2.1.2</openengsb.framework.version>
