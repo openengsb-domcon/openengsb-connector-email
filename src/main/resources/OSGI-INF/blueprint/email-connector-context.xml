@@ -33,7 +33,6 @@
       <property name="factory">
         <bean class="org.openengsb.connector.email.internal.abstraction.JavaxMailAbstractionFactory" />
       </property>
-      <property name="notificationEvents" ref="notificationEvents" />
     </bean>
   </service>
 
@@ -50,6 +49,4 @@
       <property name="bundleContext" ref="blueprintBundleContext" />
     </bean>
   </service>
-  
-  <reference id="notificationEvents" interface="org.openengsb.domain.notification.NotificationDomainEvents" />
 </blueprint>

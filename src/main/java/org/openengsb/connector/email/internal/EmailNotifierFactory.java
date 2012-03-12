@@ -22,14 +22,10 @@ import java.util.Map;
 import org.openengsb.connector.email.internal.abstraction.MailAbstractionFactory;
 import org.openengsb.core.api.Connector;
 import org.openengsb.core.common.AbstractConnectorInstanceFactory;
-import org.openengsb.domain.notification.NotificationDomainEvents;
 
 public class EmailNotifierFactory extends AbstractConnectorInstanceFactory<EmailNotifier> {
 
     private MailAbstractionFactory factory;
-    
-    @SuppressWarnings("unused")
-    private NotificationDomainEvents notificationEvents;
 
     @Override
     public Connector createNewInstance(String id) {
@@ -68,9 +64,5 @@ public class EmailNotifierFactory extends AbstractConnectorInstanceFactory<Email
 
     public void setFactory(MailAbstractionFactory factory) {
         this.factory = factory;
-    }
-    
-    public void setNotificationEvents(NotificationDomainEvents notificationEvents) {
-        this.notificationEvents = notificationEvents;
     }
 }
