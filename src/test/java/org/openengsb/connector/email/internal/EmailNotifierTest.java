@@ -33,7 +33,6 @@ import org.openengsb.connector.email.internal.abstraction.MailAbstraction;
 import org.openengsb.connector.email.internal.abstraction.MailProperties;
 import org.openengsb.core.api.AliveState;
 import org.openengsb.core.api.DomainMethodExecutionException;
-import org.openengsb.core.common.util.ModelUtils;
 import org.openengsb.domain.notification.Attachment;
 import org.openengsb.domain.notification.Notification;
 
@@ -46,7 +45,7 @@ public class EmailNotifierTest {
         when(mailMock.createMailProperties()).thenReturn(propertiesMock);
         EmailNotifier notifier = new EmailNotifier("notifier1", mailMock);
 
-        Notification notification = ModelUtils.createEmptyModelObject(Notification.class);
+        Notification notification = new Notification();
         notification.setRecipient("openengsb.notification.test@gmail.com");
         notification.setSubject("Subject");
         notification.setMessage("Content");
@@ -89,7 +88,7 @@ public class EmailNotifierTest {
         when(mailMock.createMailProperties()).thenReturn(propertiesMock);
         EmailNotifier notifier = new EmailNotifier("notifier1", mailMock);
 
-        Notification notification = ModelUtils.createEmptyModelObject(Notification.class);
+        Notification notification = new Notification();
         notification.setRecipient("openengsb.notification.test@gmail.com");
         notification.setSubject("Subject");
         notification.setMessage("Content");

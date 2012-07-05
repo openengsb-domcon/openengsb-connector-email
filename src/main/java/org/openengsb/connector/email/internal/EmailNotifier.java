@@ -33,7 +33,7 @@ public class EmailNotifier extends AbstractOpenEngSBConnectorService implements 
     private static final Logger LOGGER = LoggerFactory.getLogger(EmailNotifier.class);
 
     private final MailAbstraction mailAbstraction;
-    private ServiceRegistration serviceRegistration;
+    private ServiceRegistration<?> serviceRegistration;
     private MailProperties properties;
 
     public EmailNotifier(String instanceId, MailAbstraction mailAbstraction) {
@@ -60,11 +60,11 @@ public class EmailNotifier extends AbstractOpenEngSBConnectorService implements 
         return aliveState;
     }
 
-    public ServiceRegistration getServiceRegistration() {
+    public ServiceRegistration<?> getServiceRegistration() {
         return serviceRegistration;
     }
 
-    public void setServiceRegistration(ServiceRegistration serviceRegistration) {
+    public void setServiceRegistration(ServiceRegistration<?> serviceRegistration) {
         this.serviceRegistration = serviceRegistration;
     }
     
