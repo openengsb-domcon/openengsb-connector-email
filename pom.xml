@@ -90,7 +90,6 @@
         <configuration>
           <instructions>
             <Import-Package>
-              ${openengsb.imports},
               org.openengsb.domain.notification.*;version="${openengsb.domain.range}",
               *
             </Import-Package>
