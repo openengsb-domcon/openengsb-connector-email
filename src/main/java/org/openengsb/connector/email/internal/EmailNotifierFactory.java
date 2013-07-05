@@ -33,7 +33,7 @@ public class EmailNotifierFactory extends AbstractConnectorInstanceFactory<Email
     }
 
     @Override
-    public void doApplyAttributes(EmailNotifier notifier, Map<String, String> attributes) {
+    public EmailNotifier doApplyAttributes(EmailNotifier notifier, Map<String, String> attributes) {
         notifier.createProperties();
 
         if (attributes.containsKey("user")) {
@@ -60,6 +60,8 @@ public class EmailNotifierFactory extends AbstractConnectorInstanceFactory<Email
         if (attributes.containsKey("secureMode")) {
             notifier.getProperties().setSecureMode(attributes.get("secureMode"));
         }
+        
+        return notifier;
     }
 
     public void setFactory(MailAbstractionFactory factory) {
