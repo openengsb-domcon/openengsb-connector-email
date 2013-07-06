@@ -33,6 +33,7 @@
     <openengsb.domain.range>[3.0,4)</openengsb.domain.range>
     <javax.mail.version>1.4.1_3</javax.mail.version>
     <openengsb.framework.version>3.0.0-SNAPSHOT</openengsb.framework.version>
+    <openengsb.version.range>[3,4)</openengsb.version.range>
   </properties>
 
   <modelVersion>4.0.0</modelVersion>
