@@ -60,6 +60,9 @@ public class EmailNotifierFactory extends AbstractConnectorInstanceFactory<Email
         if (attributes.containsKey("secureMode")) {
             notifier.getProperties().setSecureMode(attributes.get("secureMode"));
         }
+        if (attributes.containsKey("trustedSites")) {
+            notifier.getProperties().setTrustedSites(attributes.get("trustedSites"));
+        }
         
         return notifier;
     }

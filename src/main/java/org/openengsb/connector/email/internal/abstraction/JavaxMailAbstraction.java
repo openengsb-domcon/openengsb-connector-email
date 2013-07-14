@@ -205,6 +205,16 @@ public class JavaxMailAbstraction implements MailAbstraction {
                 this.secureMode = SecureMode.PLAIN;
             }
         }
+        
+        @Override
+        public void setTrustedSites(String... trustedSites) {
+            StringBuilder sb = new StringBuilder();
+            for (String trustedSite: trustedSites) {
+                sb.append(trustedSite);
+                sb.append(" ");
+            }
+            properties.put("mail.smtp.ssl.trust", sb.toString());
+        }
 
         @Override
         public boolean equals(Object obj) {

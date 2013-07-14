@@ -34,6 +34,8 @@ public interface MailProperties {
     
     void setSecureMode(String secureMode);
     
+    void setTrustedSites(String... trustedSites);
+    
     enum SecureMode {
         PLAIN,
         STARTTLS,
