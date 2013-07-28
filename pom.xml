@@ -31,7 +31,6 @@
     <bundle.namespace>org.openengsb.connector.email</bundle.namespace>
     <openengsb.domain.version>3.0.0-SNAPSHOT</openengsb.domain.version>
     <openengsb.domain.range>[3.0,4)</openengsb.domain.range>
-    <javax.mail.version>1.4.1_3</javax.mail.version>
     <openengsb.framework.version>3.0.0-SNAPSHOT</openengsb.framework.version>
     <openengsb.version.range>[3,4)</openengsb.version.range>
   </properties>
@@ -123,9 +122,8 @@
   <dependencies>
     <!-- Mail References -->
     <dependency>
-      <groupId>org.apache.servicemix.bundles</groupId>
-      <artifactId>org.apache.servicemix.bundles.javax.mail</artifactId>
-      <version>${javax.mail.version}</version>
+      <groupId>com.sun.mail</groupId>
+      <artifactId>javax.mail</artifactId>
     </dependency>
 
     <!-- OpenEngSB References -->
